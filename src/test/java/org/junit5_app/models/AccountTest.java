@@ -96,5 +96,19 @@ class AccountTest {
         assertEquals("3000", account.getBalance().toPlainString());
 
         assertEquals(2, bank.getAccounts().size());
+        assertEquals("Central Bank", account.getBank().getName());
+        // Forma 1
+        assertEquals("Joel", bank.getAccounts().stream()
+                .filter(c -> c.getPerson().equals("Joel"))
+                .findFirst()
+                .get().getPerson());
+        // Forma 2
+        assertTrue(bank.getAccounts().stream()
+                .filter(c -> c.getPerson().equals("Joel"))
+                .findFirst()
+                .isPresent());
+        // Forma 3
+        assertTrue(bank.getAccounts().stream()
+                .anyMatch(c -> c.getPerson().equals("Daniel")));
     }
 }

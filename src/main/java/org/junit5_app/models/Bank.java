@@ -30,6 +30,7 @@ public class Bank {
 
     public void addAccount(Account account) {
         this.accounts.add(account);
+        account.setBank(this);
     }
 
     public void transfer (Account origin, Account destination, BigDecimal amount) {
