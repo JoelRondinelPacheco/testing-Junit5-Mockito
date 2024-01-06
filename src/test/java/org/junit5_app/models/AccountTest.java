@@ -241,7 +241,6 @@ class AccountTest {
         @Test
         @EnabledIfEnvironmentVariable(named = "HOME", matches = "/home/joel")
         void testJavaHome() {
-            fail();
         }
 
         @Test
@@ -256,7 +255,7 @@ class AccountTest {
     }
 
     @Nested
-    class asummptionsTest {
+    class assumptionsTest {
         @Test
         void testAccountBalanceDev() {
             boolean isDev = "dev".equals(System.getProperty("ENV"));
@@ -281,6 +280,16 @@ class AccountTest {
         }
     }
 
-
+    @DisplayName("Pobando debito cuenta repetidas!")
+    @RepeatedTest(value = 5, name = "{displayName} - Repetición {currentRepetition} de {totalRepetitions}")
+    void testAccountDebitRepeated(RepetitionInfo repetitionInfo) {
+        if (repetitionInfo.getCurrentRepetition() == 3){
+            System.out.println("Repetition nº: " + repetitionInfo.getCurrentRepetition());
+        }
+        account.debit(new BigDecimal("100"));
+        assertNotNull(account.getBalance());
+        assertEquals(900, account.getBalance().intValue());
+        assertEquals("900.12345", account.getBalance().toPlainString());
+    }
 
 }
