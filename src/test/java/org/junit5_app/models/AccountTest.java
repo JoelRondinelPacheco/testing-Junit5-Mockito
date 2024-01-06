@@ -15,9 +15,9 @@ class AccountTest {
 //        account.setPerson("Joel");
         String expected = "Joel";
         String actual = account.getPerson();
-        assertNotNull(actual);
-        assertEquals(expected, actual);
-        assertTrue(actual.equals("Joel"));
+        assertNotNull(actual, () -> "La cuenta no puede ser null");
+        assertEquals(expected, actual, () -> "El nuombre de la cuenta no es el esperado");
+        assertTrue(actual.equals("Joel"), () -> "El nombre de la cuenta no es igual a la real");
     }
 
     @Test
@@ -102,8 +102,8 @@ class AccountTest {
 
         // Con assertAll
         assertAll(
-                () -> {assertEquals("Central Bank.", account.getBank().getName());},
-                () -> {assertEquals("1000.898", account2.getBalance().toPlainString());},
+                () -> {assertEquals("Central Bank", account.getBank().getName());},
+                () -> {assertEquals("1000.8989", account2.getBalance().toPlainString());},
                 () -> {assertEquals("3000", account.getBalance().toPlainString());},
                 () -> {assertEquals(2, bank.getAccounts().size());},
                 () -> {assertEquals("Joel", bank.getAccounts().stream()

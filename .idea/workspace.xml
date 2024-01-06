@@ -57,7 +57,7 @@
       <recent name="org.junit5_app.models" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AccountTest.testRelBankAccount">
+  <component name="RunManager" selected="JUnit.AccountTest.testAccountName">
     <configuration name="AccountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="junit_app" />
       <extension name="coverage">
@@ -73,7 +73,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountTest.testAccountDebit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AccountTest.testAccountName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="junit_app" />
       <extension name="coverage">
         <pattern>
@@ -83,7 +83,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.junit5_app.models" />
       <option name="MAIN_CLASS_NAME" value="org.junit5_app.models.AccountTest" />
-      <option name="METHOD_NAME" value="testAccountDebit" />
+      <option name="METHOD_NAME" value="testAccountName" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -139,11 +139,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AccountTest.testAccountName" />
         <item itemvalue="JUnit.AccountTest.testRelBankAccount" />
         <item itemvalue="JUnit.AccountTest.testTransferMoneyBetweenAccounts" />
         <item itemvalue="JUnit.AccountTest.testInsufficientMoneyException" />
         <item itemvalue="JUnit.AccountTest" />
-        <item itemvalue="JUnit.AccountTest.testAccountDebit" />
       </list>
     </recent_temporary>
   </component>
