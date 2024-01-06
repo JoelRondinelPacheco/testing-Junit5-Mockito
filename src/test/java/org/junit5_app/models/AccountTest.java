@@ -1,6 +1,5 @@
 package org.junit5_app.models;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit5_app.exceptions.InsufficientMoneyException;
 
@@ -92,23 +91,34 @@ class AccountTest {
         bank.addAccount(account2);
         bank.setName("Central Bank");
         bank.transfer(account2, account, new BigDecimal("500"));
+        //SIN ASSERTALL
+        /*
         assertEquals("1000.8989", account2.getBalance().toPlainString());
         assertEquals("3000", account.getBalance().toPlainString());
 
         assertEquals(2, bank.getAccounts().size());
-        assertEquals("Central Bank", account.getBank().getName());
-        // Forma 1
-        assertEquals("Joel", bank.getAccounts().stream()
-                .filter(c -> c.getPerson().equals("Joel"))
-                .findFirst()
-                .get().getPerson());
-        // Forma 2
-        assertTrue(bank.getAccounts().stream()
-                .filter(c -> c.getPerson().equals("Joel"))
-                .findFirst()
-                .isPresent());
-        // Forma 3
-        assertTrue(bank.getAccounts().stream()
-                .anyMatch(c -> c.getPerson().equals("Daniel")));
+*/
+
+
+        // Con assertAll
+        assertAll(
+                () -> {assertEquals("Central Bank.", account.getBank().getName());},
+                () -> {assertEquals("1000.898", account2.getBalance().toPlainString());},
+                () -> {assertEquals("3000", account.getBalance().toPlainString());},
+                () -> {assertEquals(2, bank.getAccounts().size());},
+                () -> {assertEquals("Joel", bank.getAccounts().stream()
+                        .filter(c -> c.getPerson().equals("Joel"))
+                        .findFirst()
+                        .get().getPerson());},
+                () -> {assertTrue(bank.getAccounts().stream()
+                        .filter(c -> c.getPerson().equals("Joel"))
+                        .findFirst()
+                        .isPresent());},
+                () -> {assertTrue(bank.getAccounts().stream()
+                            .anyMatch(c -> c.getPerson().equals("Daniel")));
+                }
+        );
+
+
     }
 }
