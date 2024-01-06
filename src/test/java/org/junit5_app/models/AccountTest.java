@@ -70,4 +70,31 @@ class AccountTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void testTransferMoneyBetweenAccounts() {
+        Account account = new Account("Joel", new BigDecimal("2500"));
+        Account account2 = new Account("Daniel", new BigDecimal("1500.8989"));
+
+        Bank bank = new Bank();
+        bank.setName("Central Bank");
+        bank.transfer(account2, account, new BigDecimal("500"));
+        assertEquals("1000.8989", account2.getBalance().toPlainString());
+        assertEquals("3000", account.getBalance().toPlainString());
+    }
+    @Test
+    void testRelBankAccount() {
+        Account account = new Account("Joel", new BigDecimal("2500"));
+        Account account2 = new Account("Daniel", new BigDecimal("1500.8989"));
+
+        Bank bank = new Bank();
+        bank.addAccount(account);
+        bank.addAccount(account2);
+        bank.setName("Central Bank");
+        bank.transfer(account2, account, new BigDecimal("500"));
+        assertEquals("1000.8989", account2.getBalance().toPlainString());
+        assertEquals("3000", account.getBalance().toPlainString());
+
+        assertEquals(2, bank.getAccounts().size());
+    }
 }
