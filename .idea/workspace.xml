@@ -70,7 +70,7 @@
       <option name="MAIN_CLASS_NAME" value="org.junit5_app.models.AccountTest" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea -DENV=dev" />
+      <option name="VM_PARAMETERS" value="-ea -DENV=prod" />
       <envs>
         <env name="ENVIRONMENT" value="prod" />
       </envs>
