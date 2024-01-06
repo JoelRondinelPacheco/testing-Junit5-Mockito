@@ -5,6 +5,7 @@ import org.junit.jupiter.api.condition.*;
 import org.junit5_app.exceptions.InsufficientMoneyException;
 
 import java.math.BigDecimal;
+import java.util.Map;
 import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -196,4 +197,34 @@ class AccountTest {
     @Test
     @DisabledIfSystemProperty(named = "os.arch", matches = ".*32.*")
     void testOnly64(){}
+
+    @Test
+    @EnabledIfSystemProperty(named = "user.name", matches = "joel")
+    void testOnlyUserName() {
+    }
+
+    @Test
+    @EnabledIfSystemProperty(named = "ENV", matches = "dev")
+    void testDev() {
+    }
+
+    @Test
+    void printEnvironmentVar() {
+        Map<String, String> getEnv = System.getenv();
+        getEnv.forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+    @Test
+    @EnabledIfEnvironmentVariable(named = "HOME", matches = "/home/joel")
+    void testJavaHome() {
+    }
+
+    @Test
+    @EnabledIfEnvironmentVariable(named = "ENVIRONMENT", matches = "dev")
+    void testEnv() {
+    }
+    @Test
+    @DisabledIfEnvironmentVariable(named = "ENVIRONMENT", matches = "prod")
+    void testDisabledProd() {
+    }
 }

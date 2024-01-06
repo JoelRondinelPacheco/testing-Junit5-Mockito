@@ -68,7 +68,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.junit5_app.models" />
       <option name="MAIN_CLASS_NAME" value="org.junit5_app.models.AccountTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea -DENV=dev" />
+      <envs>
+        <env name="ENVIRONMENT" value="prod" />
+      </envs>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -137,6 +142,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.AccountTest" />
+      <item itemvalue="JUnit.AccountTest.testAccountName" />
+      <item itemvalue="JUnit.AccountTest.testPrintSystemProperties" />
+      <item itemvalue="JUnit.AccountTest.testRelBankAccount" />
+      <item itemvalue="JUnit.AccountTest.testTransferMoneyBetweenAccounts" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.AccountTest" />
