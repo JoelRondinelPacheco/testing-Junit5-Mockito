@@ -1,6 +1,6 @@
 package org.junit5_app.models;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit5_app.exceptions.InsufficientMoneyException;
 
 import java.math.BigDecimal;
@@ -8,10 +8,30 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AccountTest {
+    Account account;
+    @BeforeEach
+    void initTestMethod() {
+        System.out.println("Iniciando el metodo.");
+        this.account = new Account("Joel", new BigDecimal("1000.12345"));
+    }
+    @AfterEach
+    void tearDown() {
+        System.out.println("After each");
+    }
+
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("Inicializando el test (la clase test)");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("Finalizando el test");
+    }
 
     @Test
+    @DisplayName("Probando el nombre de la cuenta")
     void testAccountName() {
-        Account account = new Account("Joel", new BigDecimal("1000.12345"));
 //        account.setPerson("Joel");
         String expected = "Joel";
         String actual = account.getPerson();
@@ -21,8 +41,8 @@ class AccountTest {
     }
 
     @Test
+    @DisplayName("Probando el saldo de la cuenta corriente, que no sea null, mayor que cero y valor esperado")
     void testAccountBalance() {
-        Account account = new Account("Joel", new BigDecimal("1000.12345"));
         assertNotNull(account.getBalance());
         assertEquals(1000.12345, account.getBalance().doubleValue());
         assertFalse(account.getBalance().compareTo(BigDecimal.ZERO) < 0);
@@ -30,17 +50,17 @@ class AccountTest {
     }
 
     @Test
+    @DisplayName("Testeando referencia que sean iguales con el metodo equals")
     void testAccountReference() {
-        Account accountJoel = new Account("Joel", new BigDecimal("100.123"));
-        Account accountJoel2 = new Account("Joel", new BigDecimal("100.123"));
+        account = new Account("Joel", new BigDecimal("100.123"));
+        Account account2 = new Account("Joel", new BigDecimal("100.123"));
 
 //        assertNotEquals(accountJoel, accountJoel2);
-        assertEquals(accountJoel, accountJoel2);
+        assertEquals(account, account2);
     }
 
     @Test
     void testAccountDebit() {
-        Account account = new Account("Joel", new BigDecimal("1000.12345"));
         account.debit(new BigDecimal("100"));
         assertNotNull(account.getBalance());
         assertEquals(900, account.getBalance().intValue());
@@ -49,7 +69,6 @@ class AccountTest {
 
     @Test
     void testAccountCredit() {
-        Account account = new Account("Joel", new BigDecimal("1000.12345"));
         account.credit(new BigDecimal("100"));
         assertNotNull(account.getBalance());
         assertEquals(1100, account.getBalance().intValue());
@@ -58,8 +77,6 @@ class AccountTest {
 
     @Test
     void testInsufficientMoneyException() {
-        Account account = new Account("Joel", new BigDecimal("1000.12345"));
-
         Exception exception = assertThrows(InsufficientMoneyException.class, () -> {
             account.debit(new BigDecimal("1500"));
         });
@@ -81,8 +98,12 @@ class AccountTest {
         assertEquals("1000.8989", account2.getBalance().toPlainString());
         assertEquals("3000", account.getBalance().toPlainString());
     }
+
     @Test
+    //@Disabled //Desactiva el test. No lo hace fallar solo lo ignora.
     void testRelBankAccount() {
+        //Fuerza el error
+        //fail();
         Account account = new Account("Joel", new BigDecimal("2500"));
         Account account2 = new Account("Daniel", new BigDecimal("1500.8989"));
 
@@ -97,13 +118,11 @@ class AccountTest {
         assertEquals("3000", account.getBalance().toPlainString());
 
         assertEquals(2, bank.getAccounts().size());
-*/
-
-
+        */
         // Con assertAll
         assertAll(
-                () -> {assertEquals("Central Bank", account.getBank().getName());},
-                () -> {assertEquals("1000.8989", account2.getBalance().toPlainString());},
+                () -> {assertEquals("Central Bank", account.getBank().getName(), "Mensaje de error que siempre se crea, por mas que no salga error" );},
+                () -> {assertEquals("1000.8989", account2.getBalance().toPlainString(), () -> "Mensaje de error que solo se crea si el test falla");},
                 () -> {assertEquals("3000", account.getBalance().toPlainString());},
                 () -> {assertEquals(2, bank.getAccounts().size());},
                 () -> {assertEquals("Joel", bank.getAccounts().stream()
