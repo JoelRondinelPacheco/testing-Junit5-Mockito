@@ -2,6 +2,7 @@ package org.junit5_app.models;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit5_app.exceptions.InsufficientMoneyException;
 
 import java.math.BigDecimal;
 
@@ -56,5 +57,17 @@ class AccountTest {
         assertEquals("1100.12345", account.getBalance().toPlainString());
     }
 
+    @Test
+    void testInsufficientMoneyException() {
+        Account account = new Account("Joel", new BigDecimal("1000.12345"));
 
+        Exception exception = assertThrows(InsufficientMoneyException.class, () -> {
+            account.debit(new BigDecimal("1500"));
+        });
+
+        String expected = "Insufficient money";
+        String actual = exception.getMessage();
+
+        assertEquals(expected, actual);
+    }
 }
