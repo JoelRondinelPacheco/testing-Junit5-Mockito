@@ -1,12 +1,14 @@
 package org.junit5_app.models;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.*;
 import org.junit5_app.exceptions.InsufficientMoneyException;
 
 import java.math.BigDecimal;
+import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS) Una sola instancia para todos los metodos, no es buena practica
 class AccountTest {
     Account account;
     @BeforeEach
@@ -137,7 +139,61 @@ class AccountTest {
                             .anyMatch(c -> c.getPerson().equals("Daniel")));
                 }
         );
+    }
 
+    @Test
+    @EnabledOnOs(OS.WINDOWS)
+    void testOnlyWindow() {
 
     }
+    @Test
+    @EnabledOnOs(OS.MAC)
+    void testOnlyMac() {
+
+    }
+    @Test
+    @EnabledOnOs(OS.LINUX)
+    void testOnlyLinux() {
+
+    }
+
+    @Test
+    @DisabledOnOs(OS.LINUX)
+    void testDisabledLinux() {
+    }
+    @Test
+    @DisabledOnOs(OS.WINDOWS)
+    void testDisabledWindows() {
+    }
+
+    @Test
+    @EnabledOnJre(JRE.JAVA_8)
+    void testOnlyJDK8() {
+    }
+    @Test
+    @DisabledOnJre(JRE.JAVA_8)
+    void testDisabledJDK8() {
+    }
+    @Test
+    @EnabledOnJre(JRE.OTHER)
+    void testOnlyJDKOther() {
+    }
+
+    @Test
+    void testPrintSystemProperties(){
+        Properties properties = System.getProperties();
+        properties.forEach((k, v) -> {
+            System.out.println("K: " + k + ", V: " + v);
+        });
+    }
+
+    @Test
+    @EnabledIfSystemProperty(named = "java.version", matches = "17.*")
+    void testJavaVersion() {
+
+    }
+
+    @Test
+    @DisabledIfSystemProperty(named = "os.arch", matches = ".*32.*")
+    void testOnly64(){}
 }

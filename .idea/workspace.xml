@@ -89,7 +89,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountTest.testInsufficientMoneyException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AccountTest.testPrintSystemProperties" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="junit_app" />
       <extension name="coverage">
         <pattern>
@@ -99,7 +99,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.junit5_app.models" />
       <option name="MAIN_CLASS_NAME" value="org.junit5_app.models.AccountTest" />
-      <option name="METHOD_NAME" value="testInsufficientMoneyException" />
+      <option name="METHOD_NAME" value="testPrintSystemProperties" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -140,10 +140,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.AccountTest" />
+        <item itemvalue="JUnit.AccountTest.testPrintSystemProperties" />
         <item itemvalue="JUnit.AccountTest.testAccountName" />
         <item itemvalue="JUnit.AccountTest.testRelBankAccount" />
         <item itemvalue="JUnit.AccountTest.testTransferMoneyBetweenAccounts" />
-        <item itemvalue="JUnit.AccountTest.testInsufficientMoneyException" />
       </list>
     </recent_temporary>
   </component>
