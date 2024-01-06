@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bfb1a830-d54d-4c58-8d5e-8d2f2cafd661" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/junit5_app/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/junit5_app/models/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/junit5_app/models/AccountTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/junit5_app/models/AccountTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +57,7 @@
       <recent name="org.junit5_app.models" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AccountTest.testAccountReference">
+  <component name="RunManager" selected="JUnit.AccountTest">
     <configuration name="AccountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="junit_app" />
       <extension name="coverage">
@@ -82,6 +84,22 @@
       <option name="PACKAGE_NAME" value="org.junit5_app.models" />
       <option name="MAIN_CLASS_NAME" value="org.junit5_app.models.AccountTest" />
       <option name="METHOD_NAME" value="testAccountBalance" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountTest.testAccountDebit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="junit_app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.junit5_app.models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.junit5_app.models" />
+      <option name="MAIN_CLASS_NAME" value="org.junit5_app.models.AccountTest" />
+      <option name="METHOD_NAME" value="testAccountDebit" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -121,8 +139,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AccountTest.testAccountReference" />
         <item itemvalue="JUnit.AccountTest" />
+        <item itemvalue="JUnit.AccountTest.testAccountDebit" />
+        <item itemvalue="JUnit.AccountTest.testAccountReference" />
         <item itemvalue="JUnit.AccountTest.testAccountBalance" />
         <item itemvalue="JUnit.AccountTest.testAccountName" />
       </list>

@@ -15,6 +15,7 @@ class AccountTest {
 //        account.setPerson("Joel");
         String expected = "Joel";
         String actual = account.getPerson();
+        assertNotNull(actual);
         assertEquals(expected, actual);
         assertTrue(actual.equals("Joel"));
     }
@@ -22,6 +23,7 @@ class AccountTest {
     @Test
     void testAccountBalance() {
         Account account = new Account("Joel", new BigDecimal("1000.12345"));
+        assertNotNull(account.getBalance());
         assertEquals(1000.12345, account.getBalance().doubleValue());
         assertFalse(account.getBalance().compareTo(BigDecimal.ZERO) < 0);
         assertTrue(account.getBalance().compareTo(BigDecimal.ZERO) > 0);
@@ -35,4 +37,24 @@ class AccountTest {
 //        assertNotEquals(accountJoel, accountJoel2);
         assertEquals(accountJoel, accountJoel2);
     }
+
+    @Test
+    void testAccountDebit() {
+        Account account = new Account("Joel", new BigDecimal("1000.12345"));
+        account.debit(new BigDecimal("100"));
+        assertNotNull(account.getBalance());
+        assertEquals(900, account.getBalance().intValue());
+        assertEquals("900.12345", account.getBalance().toPlainString());
+    }
+
+    @Test
+    void testAccountCredit() {
+        Account account = new Account("Joel", new BigDecimal("1000.12345"));
+        account.credit(new BigDecimal("100"));
+        assertNotNull(account.getBalance());
+        assertEquals(1100, account.getBalance().intValue());
+        assertEquals("1100.12345", account.getBalance().toPlainString());
+    }
+
+
 }

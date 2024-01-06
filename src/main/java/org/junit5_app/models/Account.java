@@ -27,9 +27,18 @@ public class Account {
         this.balance = balance;
     }
 
+    public void debit(BigDecimal amount) {
+        this.balance = this.balance.subtract(amount);
+    }
+
+
+    public void credit(BigDecimal amount) {
+        this.balance = this.balance.add(amount);
+    }
+
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || !(obj instanceof Account)) {
+        if (!(obj instanceof Account)) {
             return false;
         }
 
@@ -40,4 +49,5 @@ public class Account {
         }
         return this.person.equals(c.getPerson()) && this.balance.equals(c.getBalance());
     }
+
 }
